@@ -51,8 +51,6 @@ export function clearGallery() {
   galleryContainer.innerHTML = '';
 }
 
-// В render-functions.js
-
 export function showLoader() {
   const wrapper = document.querySelector('.loader-wrapper');
   if (wrapper) wrapper.style.display = 'flex';
