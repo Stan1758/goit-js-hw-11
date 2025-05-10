@@ -6,7 +6,6 @@ body {
   padding: 108px 0;
 }
 
-/* Стили для формы */
 .form {
   width: 371px;
   height: 40px;
@@ -15,7 +14,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  align-items: center; /* Центрирует элементы по вертикали */
+  align-items: center;
 }
 
 .form label {
@@ -29,15 +28,17 @@ body {
   width: 272px;
   height: 40px;
   outline: none;
-  box-sizing: border-box; /* Учитываем padding в расчете ширины */
+  box-sizing: border-box;
 }
 
 .form input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Эффект фокуса */
+  border-color: #4e75ff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.form input:hover {
+  border: 1px solid #000;
 }
 
-/* Стили для кнопки */
 .form .btn {
   border-radius: 8px;
   padding: 8px 16px;
@@ -57,10 +58,10 @@ body {
   background: #6c8cff;
 }
 
-/* Стили для галереи */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 360px);
+  height: 200px;
   gap: 15px;
   list-style: none;
   padding: 0;
@@ -71,19 +72,22 @@ body {
 .gallery img {
   width: 100%;
   display: block;
-  height: 200px;
+  height: 152px;
   object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-/* Стили для информации */
 .info {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  padding: 8px;
+  padding: 4px;
   font-size: 14px;
   text-align: center;
   border: 1px solid #808080;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .info-item {
@@ -94,12 +98,16 @@ body {
 }
 
 .info-item .value {
-  font-weight: bold;
-  margin-top: 4px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
 .loader-wrapper {
   position: fixed;
-  top: 80px; /* Можно изменить по вкусу: 20px, 100px и т.д. */
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;

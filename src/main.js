@@ -11,7 +11,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
 
-form.addEventListener('submit', async event => {
+form.addEventListener('submit', event => {
   event.preventDefault();
 
   const input = form.elements['search-text'];
@@ -29,26 +29,27 @@ form.addEventListener('submit', async event => {
   clearGallery();
   showLoader();
 
-  try {
-    const data = await getImagesByQuery(query);
+  getImagesByQuery(query)
+    .then(data => {
+      if (!data.hits || !data.hits.length) {
+        iziToast.info({
+          title: '',
+          message: 'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+        });
+        return;
+      }
 
-    if (!data.hits || !data.hits.length) {
-      iziToast.info({
-        title: '',
-        message: 'Sorry, there are no images matching your search query. Please try again!',
+      createGallery(data.hits);
+    })
+    .catch(error => {
+      iziToast.error({
+        title: 'Error',
+        message: 'Something went wrong, please try again.',
         position: 'topRight',
       });
-      return;
-    }
-
-    createGallery(data.hits);
-  } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong, please try again.',
-      position: 'topRight',
+    })
+    .finally(() => {
+      hideLoader();
     });
-  } finally {
-    hideLoader();
-  }
 });
